@@ -1,5 +1,5 @@
 body{
-	background-color: white;
+	background-color: black;
 	width:100%;
 	height:700px;
 	margin:0;
@@ -16,18 +16,24 @@ body{
 	flex-direction: column;
 }
 
+
+
 #logo{
+	
 	width: 550px;
 	height:145px;
 	background-color: none;
 }
+
+
 	
 #description{
 	font-family: 'Bungee Hairline', cursive;
 	font-size: 11px;
 	color: black;
 	width: 30%;
-	max-width:550px;
+	min-width: 330px;
+	max-width:400px;
 	text-align: center;
 
 }
@@ -44,25 +50,85 @@ body{
 
 #gif{
 	background-image: url("../images/hack.gif");
-	visibility: hidden;
+	display: none;
 	position: absolute;
 	top: 0;
+	bottom: 0;
 	z-index: 5;
 	width:100%;
-	height:100%;
 }
+
+
 
 
 
 /*//Game Page One*/
 
 #gamePage{
-	visibility: hidden;
-	display: flex;
+/*	display: none;
+*/	flex-direction: column;
+	justify-content: center;
 	width:100%;
-	height:900px;
+	height:700px;
 	margin:0;
 	background-color: black;
 }
+
+/*//TOP*/
+
+#top{
+	width: 100%;
+	/*background-color: red;*/
+	height:50px;
+	flex-grow: 1;
+}
+
+/*//MIDDLE*/
+
+#middle{
+	display: flex;
+	justify-content:center;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+	height: 550px;
+	/*background-color: yellow;*/
+
+}
+
+input{
+	width: 150px;
+	height: 25px;
+	font-size: 15px;
+}
+
+#submit{
+	width: 50px;
+	height: 20px;
+	font-size: 13px;
+	font-family: 'VT323', monospace;
+	margin-left: 10px;
+}
+
+#access{
+	font-family: 'VT323', monospace;
+	font-size: 50px;
+	color: white;
+	margin-top: 12px;
+	position: fixed;
+	top: 375px;
+	
+}
+
+/*//BOTTOM*/
+
+#bottom{
+	width:100%;
+	height:50px;
+	/*background-color: green;*/
+	flex-grow: 1;
+
+}
+
 
 
