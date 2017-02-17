@@ -1,0 +1,68 @@
+body{
+	background-color: white;
+	width:100%;
+	height:700px;
+	margin:0;
+}
+
+/*Start Page*/
+
+#pageOne{
+	width:100%;
+	height:600px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+#logo{
+	width: 550px;
+	height:145px;
+	background-color: none;
+}
+	
+#description{
+	font-family: 'Bungee Hairline', cursive;
+	font-size: 11px;
+	color: black;
+	width: 30%;
+	max-width:550px;
+	text-align: center;
+
+}
+
+#startBtn{
+	background-color: black;
+	height: 25px;
+	width: 100px;
+	font-family: 'Bungee Hairline', cursive;
+	color: white;
+	text-align: center;
+	font-size: 13px;
+}
+
+#gif{
+	background-image: url("../images/hack.gif");
+	visibility: hidden;
+	position: absolute;
+	top: 0;
+	z-index: 5;
+	width:100%;
+	height:100%;
+}
+
+
+
+/*//Game Page One*/
+
+#gamePage{
+	visibility: hidden;
+	display: flex;
+	width:100%;
+	height:900px;
+	margin:0;
+	background-color: black;
+}
+
+
