@@ -7,11 +7,8 @@ $('#startBtn').on('click',function(e){
 	$('#audio').trigger('play');
 setTimeout(function(){
 	$('#gif').hide();
-	$('#gamePage').css('background-color','black');
-	$('body').css('background-color','black');
-	$('#pageOne').hide();
-	$('#gamePage').css('display', 'flex');
 	},3000);
+	$('#gamePage').css('display','flex');
 });
 
 function setTimer(){
@@ -47,7 +44,6 @@ $('#submit').on('click',function(e){
 	if( $('#input').val() === 'X3478SJ') {
 		$('#access').show();
         $('#access').text('ACCESS GRANTED');
-        	youWin();
 	}
     else{
     	counter++
