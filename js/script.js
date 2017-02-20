@@ -1,15 +1,15 @@
 
 
 
-$('#startBtn').on('click',function(e){
-	$('#gif').show();
-	$('#audio').prop('volume','.05');
-	$('#audio').trigger('play');
-setTimeout(function(){
-	$('#gif').hide();
-	},3000);
-	$('#gamePage').css('display','flex');
-});
+// $('#startBtn').on('click',function(e){
+// 	$('#gif').show();
+// 	$('#audio').prop('volume','.05');
+// 	$('#audio').trigger('play');
+// setTimeout(function(){
+// 	$('#gif').hide();
+// 	},3000);
+// 	$('#gamePage').css('display','flex');
+// });
 
 function setTimer(){
 var counter = 100;
@@ -30,8 +30,29 @@ function setGame(){
 	$('#timeDiv').show();
 }
 
-// setGame();
 
+// Clue one
+
+function hide(){
+	$('#clueOne').hide()
+}
+
+function show(){
+	$('#clueOne').show()
+}
+
+setInterval(function(){
+	show();
+},1000)
+
+setInterval(function(){
+	hide();
+},2000)
+	
+
+
+
+//Input
 
 $('#input').keydown(function(event){
 	if(event.keyCode == '13'){
@@ -61,6 +82,10 @@ $('#submit').on('click',function(e){
         	$('#input').val('')
         },2000);
 });
+
+
+
+
 
 
 
