@@ -3,6 +3,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/picol.css">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<title>/blacksite</title>
 </head>
@@ -10,47 +11,49 @@
 <!-- Start Page -->
 	
 	<!-- <div id="pageOne">
+		<h1 id="busted">location triangulated.goodbye.</h1>
 		<div id="logo">
 			<img src="images/logo.svg"/>
 		</div>
-		
-		<button id="startBtn">Start</h2></button>
-	</div> -->
-
+		<button type="button" id="startBtn">Start</button>
+		<button id="reloadBtn">Restart</button>
+	</div>
+ -->
 
 <!-- Transition--> 
 
 <!-- <div id="gif">
 </div>
 
-<audio id="audio"><source src="images/modem.mp3" type="audio/mpeg"></audio>  -->
-
+<audio id="audio"><source src="images/modem.mp3" type="audio/mpeg"></audio> 
+ -->
 <!-- Game Page -->
 <div id="gamePage">
-	
 	<div class="left">
 		<div id="timeDiv">
-			<h2 id="time">100</h2>
+			<h2 id="time">50</h2>
 		</div>
-		<div id="clueOne"></div>
+			<h2 id="attempts"></h2>
+			<i class="picol_rdf"></i>
 	</div>
 
 	<div class="middle">
-		<div id="inputBlock">
-			<input id="input" type="password" name="password"/>
-			<button id="submit">Login</button>
-		</div>
-		
+		<p id ="wrong">tagruato<br>futurabold<br>helpme</p>
+			<div id="inputBlock">
+				<input id="input" type="password" name="password"/>
+				<button type="button" id="submit">Login</button>
+			</div>
 		<h2 id="access"></h2>
-		
-		
 	</div>
-
 
 	<div class="right">
-
+		<div id="gridContainer">
+			<div id="grid"></div>
+			<div id="clueTwo"> 
+				<i class="picol_avatar"></i>
+			</div>
+		</div>
 	</div>
-
 </div>
 
 <script type="text/javascript" src="js/script.js"></script>

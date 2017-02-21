@@ -1,18 +1,33 @@
 
+//Start Page
 
-
-// $('#startBtn').on('click',function(e){
+// $('#startBtn').on('click',function(e){ 
 // 	$('#gif').show();
 // 	$('#audio').prop('volume','.05');
 // 	$('#audio').trigger('play');
-// setTimeout(function(){
+// setTimeout(function(e){
 // 	$('#gif').hide();
-// 	},3000);
+// 	},3000); 
 // 	$('#gamePage').css('display','flex');
+// 	$('#pageOne').css('display', 'none')
 // });
 
+//Clue One
+
+function clueOne(){
+	setInterval(function(){
+		$('.picol_rdf').hide();
+	},1000)
+
+	setInterval(function(){
+		$('.picol_rdf').show();
+	},2000)
+}
+
+//Timer
+
 function setTimer(){
-var counter = 100;
+var counter = 50;
 var countdown = setInterval(function(){
 	counter --;
 	if(counter > 0){
@@ -21,38 +36,22 @@ var countdown = setInterval(function(){
 	else{
 		counter === 0;
 		$('#time').hide();
+		$('#gamePage').css('display', 'none');
+		$('#busted').show();
+		$('#logo').hide();
+		$('#startBtn').hide();
+		$('#pageOne').css('display', 'flex')
 		};
 	},2000);
 };
-// setTimer();
+
 	
 function setGame(){
 	$('#timeDiv').show();
 }
 
 
-// Clue one
-
-function hide(){
-	$('#clueOne').hide()
-}
-
-function show(){
-	$('#clueOne').show()
-}
-
-setInterval(function(){
-	show();
-},1000)
-
-setInterval(function(){
-	hide();
-},2000)
-	
-
-
-
-//Input
+//Input Box
 
 $('#input').keydown(function(event){
 	if(event.keyCode == '13'){
@@ -68,13 +67,25 @@ $('#submit').on('click',function(e){
 	}
     else{
     	counter++
+    	$('#attempts').text('attempts: ' + counter + ' of 10');
     	$('#access').show();
         $('#access').text('ACCESS DENIED');
         if(counter === 3){
         	$('#access').hide();
         	 setGame();
         	 setTimer();
+        	 $('#clueOne').show();
+        	 clueOne();
+        	 $('#wrong').hide();
         	}
+        else if(counter === 10){
+        	$('#time').hide();
+			$('#gamePage').css('display', 'none');
+			$('#busted').show();
+			$('#logo').hide();
+			$('#startBtn').hide();
+			$('#pageOne').css('display', 'flex')
+        }
        }
 	
 	setTimeout(function(){
