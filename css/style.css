@@ -77,15 +77,47 @@ body{
 
 
 #gamePage{
-	display: flex;
+	display: none;
 	position: fixed;
 	flex-direction: row;
 	width:100%;
 	min-width: 700px;
+	min-height: 500px;
 	height:100%;
 	margin:0;
 	background-color: black;
 }
+
+#overlays{
+	position:fixed;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	width:100%;
+	height:100%;
+	z-index:1000;
+	/*background-color: green;*/
+}
+
+#howard{
+	display:none;
+    width: 400px;
+    height: 400px;
+}
+
+#howard2{
+	display:none;
+	width: 400px;
+	height: 400px;
+}
+
+#memo{
+	display: none;
+	width: 400px;
+	height: 526px;
+}
+
+
 
 
 /*//LEFT*/
@@ -119,11 +151,30 @@ body{
 }
 
 #attempts{
+	/*display: block;*/
 	position: fixed;
 	top:35px;
 	left: 12px;
 	color: white;
 	font-family: 'VT323', monospace;
+}
+
+textarea{
+	position:fixed;
+	left:12px;
+	top: 100px;
+	max-width:150px;
+	max-height: 200px;
+	background-color: black;
+	font-family: 'VT323', monospace;
+	font-size: 11px;
+	color: white;
+	border: solid 1px white;
+	z-index:2000;
+}
+
+textarea:focus{
+	outline:none;
 }
 
 .picol_rdf{
@@ -152,7 +203,15 @@ body{
 
 #wrong{
 	position: fixed;
-	top: 12px;
+	top: 11px;
+	color: white;
+	font-family: 'VT323', monospace;
+}
+
+#howardsMark{
+	position: fixed;
+	top: 140px;
+	margin-left:25px;
 	color: white;
 	font-family: 'VT323', monospace;
 }
@@ -239,7 +298,20 @@ input:focus{
 }
 
 .picol_avatar{
+	color: none;
+}
+
+.picol_avatar:hover{
 	color: red;
+}
+
+
+.picol_attachment{
+	display: none;
+	color:red;
+	font-size:20px;
+	position:relative;
+	bottom: 120px;
 }
 
 

@@ -10,35 +10,45 @@
 <body>
 <!-- Start Page -->
 	
-	<!-- <div id="pageOne">
+	<div id="pageOne">
 		<h1 id="busted">location triangulated.goodbye.</h1>
 		<div id="logo">
-			<img src="images/logo.svg"/>
+			<img src="images/logo_alt.svg"/>
 		</div>
 		<button type="button" id="startBtn">Start</button>
-		<button id="reloadBtn">Restart</button>
+		<button type="button" id="reloadBtn">Restart</button>
+		<audio id="siren"><source src="images/gameOver.mp3" type="audio/mpeg"></audio>
 	</div>
- -->
+
 
 <!-- Transition--> 
 
-<!-- <div id="gif">
+<div id="gif">
 </div>
 
 <audio id="audio"><source src="images/modem.mp3" type="audio/mpeg"></audio> 
- -->
+
 <!-- Game Page -->
 <div id="gamePage">
+	
+	<div id="overlays">
+		<div id="howard"><img src="images/howard1.jpg"></div>
+		<div id="howard2"><img src="images/howard2.jpg"></div>
+		<div id="memo"><img src="images/clueOne.jpg"></div>
+	</div>
+
 	<div class="left">
 		<div id="timeDiv">
-			<h2 id="time">50</h2>
+			<h2 id="time">75</h2>
 		</div>
 			<h2 id="attempts"></h2>
+			<textarea rows="5" cols="25">notes...</textarea>
 			<i class="picol_rdf"></i>
 	</div>
 
 	<div class="middle">
-		<p id ="wrong">tagruato<br>futurabold<br>helpme</p>
+		<p id ="wrong">tagruato<br>bold.futura<br>4/57<br>slusho<br>help.me<br>67c<br>7825gk</p>
+		<p id="howardsMark">howard.was.here</p>
 			<div id="inputBlock">
 				<input id="input" type="password" name="password"/>
 				<button type="button" id="submit">Login</button>
@@ -47,11 +57,12 @@
 	</div>
 
 	<div class="right">
+		<i class="picol_attachment"></i>
 		<div id="gridContainer">
 			<div id="grid"></div>
 			<div id="clueTwo"> 
 				<i class="picol_avatar"></i>
-			</div>
+		</div>
 		</div>
 	</div>
 </div>
