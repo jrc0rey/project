@@ -1,45 +1,51 @@
 
 // //Start Page
 
-$('#startBtn').on('click',function(e){ 
-	$('#gif').show();
-	$('#audio').prop('volume','.05');
-	$('#audio').trigger('play');
-setTimeout(function(e){
-	$('#gif').hide();
-	},3000); 
-	$('#gamePage').css('display','flex');
-	$('#pageOne').css('display', 'none')
-});
+// $('#startBtn').on('click',function(e){ 
+// 	$('#gif').show();
+// 	$('#audio').prop('volume','.05');
+// 	$('#audio').trigger('play');
+// setTimeout(function(e){
+// 	$('#gif').hide();
+// 	},3000); 
+// 	$('#gamePage').css('display','flex');
+// 	$('#pageOne').css('display', 'none')
+// });
 
-// //Clue One
+function inputDisable(){
+	$('#input').prop('disabled', true)
+}
+
+function inputEnable(){
+	$('#input').prop('disabled', false)
+}
+
+//Clues
 
 function clueOne(){
-	var iconOne = setInterval(function(){
-		$('.picol_rdf').hide();
-	},1000)
-
-	var iconTwo = setInterval(function(){
-		$('.picol_rdf').show();
-	},2000)
-
+ var fade = function(){
+	$('.picol_rdf').fadeIn(1000);
+	$('.picol_rdf').fadeOut(2000);
+	fade();
+	}
+	fade();
+}
 	$('.picol_rdf').on('click', function(e){
 		$('#overlays').css('display','flex')
 		$('#memo').show();
+		$('ul').hide();
 	})
-
 	$('#memo').on('click',function(e){
 		clueTwo();
 		$('#overlays').css('display','none')
-		$('.picol_rdf').hide();
-		clearInterval(iconOne)
-		clearInterval(iconTwo)
+		$('.picol_rdf').remove();
 	})
-}
 
 function clueTwo(){
+	inputDisable();
 	$('#gridContainer').show();
 	$('.picol_avatar').on('click', function(e){
+		$('.picol_avatar').css('color', 'red')
 		$('#overlays').css('display','flex');
 		$('#howard').show();
 		$('#memo').hide();
@@ -52,15 +58,28 @@ function clueTwo(){
 		$('#howard2').hide();
 		$('#gridContainer').hide();
 		$('#overlays').hide();
+		inputEnable();
 	})
 }
 
 
 
-//Timer
+$('.picol_attachment').on('click',function(e){
+		inputDisable();
+		$('ul').hide();
+		$('.picol_attachment').hide();
+		$('#letterContainer').show();
+		$('button').text('user');
+})
+
+
+
+
+
+// Timer
 
 function setTimer(){
-var counter = 75;
+var counter = 200;
 var countdown = setInterval(function(){
 	counter --;
 	if(counter > 0){
@@ -68,15 +87,7 @@ var countdown = setInterval(function(){
 	}
 	else{
 		counter === 0;
-		$('#time').hide();
-		$('#gamePage').css('display', 'none');
-		$('#busted').show();
-		$('#logo').hide();
-		$('#startBtn').hide();
-		$('#pageOne').css('display', 'flex')
-		$('#reloadBtn').show();
-		$('#siren').prop('volume','.05');
-		$('#siren').trigger('play');
+		endGame();
 		};
 	},2000);
 };
@@ -97,42 +108,69 @@ $('#input').keydown(function(event){
 
 var counter = 0;
 $('#submit').on('click',function(e){                
-	if( $('#input').val() === 'X3478SJ') {
+	if( $('#input').val() === 'thesearchisover') {
 		$('#access').show();
         $('#access').text('ACCESS GRANTED');
+        $('#access').css('color','#00fcdd')
 	}
     else{
     	counter++
-    	$('#attempts').text('attempts: ' + counter + ' of 7');
+    	$('#attempts').text('attempts: ' + counter + ' of 10');
     	$('#access').show();
         $('#access').text('ACCESS DENIED');
-        if ($('#input').val() === 'help.me'){
-        	$('.picol_attachment').show();
-        	$('.picol_attachment').fadeOut(5000);
-        }
-        if(counter === 3){
+        if(counter === 1){
+        	setTimeout(function(){
         	$('#access').hide();
+        	$('#input').val('')
+        	},2000);
         	 setGame();
         	 setTimer();
-        	 $('#clueOne').show();
-        	 clueOne();
-        	 $('#wrong').hide();
-        	 $('#howardsMark').css('color','red')
-        	 $('#howardsMark').fadeOut(2000)
-        	}
-        else if(counter === 4){
-        	$('.picol_attachment').hide();
+        	 }
+        if ($('#input').val() === 'help.me'){
+        	$('.picol_attachment').show();
+        	$('li:nth-child(5)').css('color','red');
+			$('li:nth-child(5)').fadeOut(3000);
         }
-        else if(counter === 7){
-        	$('#time').hide();
-			$('#gamePage').css('display', 'none');
-			$('#busted').show();
-			$('#logo').hide();
-			$('#startBtn').hide();
-			$('#reloadBtn').show();
-			$('#pageOne').css('display', 'flex')
-			$('#siren').prop('volume','.05');
-			$('#siren').trigger('play');
+        
+        if ($('#input').val() === '10/28'){
+        	endGame();
+        }
+        if ($('#input').val() === '7825gk'){
+        	endGame();
+        }
+        if ($('#input').val() === 'official.us'){
+        	endGame();
+        }
+        if ($('#input').val() === 'login'){
+        	endGame();
+        }
+        
+        if ($('#input').val() === 'h.stambler'){
+        	setTimeout(function(){
+        	$('#access').hide();
+        	$('#input').val('')
+        	},2000);
+        	// $('#wrong').hide();
+        	$('li:nth-child(7)').css('color','red')
+        	$('li:nth-child(7)').fadeOut(3000)
+        	clueOne();
+        }
+        
+        //Solutions
+
+        if ($('#input').val() === '0m7'){
+        	$('textarea').append('h.stambler=the ')
+        	$('ul').show();
+        }
+        if ($('#input').val() === 'radioman70'){
+        	$('textarea').append('help.me=over ');
+        	$('ul').show();
+			$('#letterContainer').hide();
+			$('button').text('login');
+		}
+        
+        else if(counter === 10){
+        	endGame();
         }
        }
 	
@@ -144,9 +182,24 @@ $('#submit').on('click',function(e){
 
 $('#reloadBtn').on('click',function(e){
 	location.reload();
-})
+});
+
+function endGame(){
+	$('#time').hide();
+	$('#gamePage').css('display', 'none');
+	$('#busted').show();
+	$('#logo').hide();
+	$('#startBtn').hide();
+	$('#reloadBtn').show();
+	$('#pageOne').css('display', 'flex')
+	$('#siren').prop('volume','.05');
+	$('#siren').trigger('play');
+};
 
 
+
+
+ 
 
 
 
