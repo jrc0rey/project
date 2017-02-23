@@ -20,7 +20,7 @@ function inputEnable(){
 	$('#input').prop('disabled', false)
 }
 
-//Clues
+// Howard's Clue Part I
 
 function clueOne(){
  var fade = function(){
@@ -41,8 +41,11 @@ function clueOne(){
 		$('.picol_rdf').remove();
 	})
 
+// Howard's Clue Part II
+
 function clueTwo(){
 	inputDisable();
+	$('#letterContainer').hide();
 	$('#gridContainer').show();
 	$('.picol_avatar').on('click', function(e){
 		$('.picol_avatar').css('color', 'red')
@@ -62,41 +65,62 @@ function clueTwo(){
 	})
 }
 
-
+//Paper Clip Icon
 
 $('.picol_attachment').on('click',function(e){
-		inputDisable();
 		$('ul').hide();
 		$('.picol_attachment').hide();
 		$('#letterContainer').show();
 		$('button').text('user');
+
 })
 
+//Slusho
 
-
-
+function slusho(){
+	$('#overlays').css('display', 'flex');
+	$('#slusho').fadeIn(300);
+	$('#slusho').css({
+    transition: '1s linear',
+    transform: 'rotate(' + 360 + 'deg)'
+  	});
+	$('#slusho').fadeOut(900);
+	$('li:nth-child(3) , li:nth-child(4), li:nth-child(6) , li:nth-child(8) , li:nth-child(9)').css('color', 'red').css('text-decoration','line-through');
+	setTimeout(function(){
+		$('#overlays').css('display','none');
+		$('#slusho').remove();
+	},2000)
+}	
 
 // Timer
-
+var numberCounter = 15;
 function setTimer(){
-var counter = 200;
+// var counter = 50;
 var countdown = setInterval(function(){
-	counter --;
-	if(counter > 0){
-	$('#time').text(counter);
+	numberCounter --;
+	if(numberCounter > 0){
+	$('#time').text(numberCounter);
 	}
 	else{
-		counter === 0;
+		numberCounter === 0;
 		endGame();
 		};
 	},2000);
 };
 
-	
 function setGame(){
 	$('#timeDiv').show();
 }
 
+// Bold.Futura
+ function bold(){
+ 	$('#bfLogo').show();
+ 	$('li:nth-child(2)').css('color','red').css('text-decoration','line-through');
+ 	$( "#bfLogo" ).click(function() {
+  		$( "#timeText" ).slideDown( "slow", function() {
+  		});
+	});
+}
 
 //Input Box
 
@@ -128,8 +152,25 @@ $('#submit').on('click',function(e){
         	 }
         if ($('#input').val() === 'help.me'){
         	$('.picol_attachment').show();
-        	$('li:nth-child(5)').css('color','red');
-			$('li:nth-child(5)').fadeOut(3000);
+        	$('li:nth-child(5)').css('color','red').css('text-decoration','line-through');
+        }
+
+        if ($('#input').val() === 'h.stambler'){
+        	setTimeout(function(){
+        	$('#access').hide();
+        	$('#input').val('')
+        	},2000);
+        	// $('#wrong').hide();
+        	$('li:nth-child(7)').css('color','red').css('text-decoration','line-through');
+			clueOne();
+        }
+
+        if ($('#input').val() === 'bold.futura'){
+        	bold();
+        }
+
+        if ($('#input').val() === 'slusho'){
+        	slusho();
         }
         
         if ($('#input').val() === '10/28'){
@@ -145,18 +186,7 @@ $('#submit').on('click',function(e){
         	endGame();
         }
         
-        if ($('#input').val() === 'h.stambler'){
-        	setTimeout(function(){
-        	$('#access').hide();
-        	$('#input').val('')
-        	},2000);
-        	// $('#wrong').hide();
-        	$('li:nth-child(7)').css('color','red')
-        	$('li:nth-child(7)').fadeOut(3000)
-        	clueOne();
-        }
-        
-        //Solutions
+		//Solutions
 
         if ($('#input').val() === '0m7'){
         	$('textarea').append('h.stambler=the ')
@@ -167,6 +197,15 @@ $('#submit').on('click',function(e){
         	$('ul').show();
 			$('#letterContainer').hide();
 			$('button').text('login');
+			$('.picol_attachment').remove();
+		}
+
+		if ($('#input').val() === 'time'){
+			numberCounter = 46;
+			$('time').text('46');
+			$('#bfLogo').hide();
+			$('#timeText').hide();
+			$('textarea').append('bold.futura=is ');
 		}
         
         else if(counter === 10){
@@ -179,6 +218,8 @@ $('#submit').on('click',function(e){
         	$('#input').val('')
         },2000);
 });
+
+//End Game Stuff
 
 $('#reloadBtn').on('click',function(e){
 	location.reload();
