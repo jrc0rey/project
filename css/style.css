@@ -191,9 +191,6 @@ textarea:focus{
 }
 
 #timeText{
-	/*position:fixed;
-	left:12px;
-	top:356px;*/
 	display: none;
 	width: 82px;
 	font-family: 'VT323', monospace;
@@ -237,13 +234,6 @@ li{
 	list-style: none;
 }
 
-/*#howardsMark{
-	position: fixed;
-	top: 140px;
-	margin-left:25px;
-	color: white;
-	font-family: 'VT323', monospace;
-}*/
 
 #inputBlock{
 	position:fixed;
@@ -306,6 +296,13 @@ input:focus{
 	border: solid 1px white;
 }
 
+#badArea{
+	/*background-color: red;*/
+	position: fixed;
+	width:200px;
+	height:200px;
+}
+
 #grid{
 
 }
@@ -319,7 +316,7 @@ input:focus{
 	left:75px;
 	width: 15px;
 	height: 15px;
-	background-color: none;
+	/*background-color: none;*/
 }
 
 #letterContainer{

@@ -20,6 +20,12 @@ function inputEnable(){
 	$('#input').prop('disabled', false)
 }
 
+//Global Variables
+
+var firstTime = true;
+var firstRadioMan = true;
+var howardClue = true;
+
 // Howard's Clue Part I
 
 function clueOne(){
@@ -47,6 +53,9 @@ function clueTwo(){
 	inputDisable();
 	$('#letterContainer').hide();
 	$('#gridContainer').show();
+	$('#badArea').on('click', function(e){
+		endGame();
+	})
 	$('.picol_avatar').on('click', function(e){
 		$('.picol_avatar').css('color', 'red')
 		$('#overlays').css('display','flex');
@@ -122,6 +131,34 @@ function setGame(){
 	});
 }
 
+//Bold.Futura Solution
+
+function boldSolution(){
+			numberCounter = 51;
+			$('time').text('51');
+			$('#bfLogo').hide();
+			$('#timeText').hide();
+			$('textarea').append('bold.futura=is ');
+
+}
+
+//Help.me Solution
+
+function helpMe(){
+	$('textarea').append('help.me=over ');
+    $('ul').show();
+	$('#letterContainer').hide();
+	$('button').text('login');
+	$('.picol_attachment').remove();
+}
+
+//Howard's Solution
+
+function howard(){
+	$('textarea').append('h.stambler=the ')
+    $('ul').show();
+}
+
 //Input Box
 
 $('#input').keydown(function(event){
@@ -189,23 +226,24 @@ $('#submit').on('click',function(e){
 		//Solutions
 
         if ($('#input').val() === '0m7'){
-        	$('textarea').append('h.stambler=the ')
-        	$('ul').show();
+        	if(howardClue === true){
+        	howard();
+        	howardClue = false;
+        	}
         }
         if ($('#input').val() === 'radioman70'){
-        	$('textarea').append('help.me=over ');
-        	$('ul').show();
-			$('#letterContainer').hide();
-			$('button').text('login');
-			$('.picol_attachment').remove();
+        	if(firstRadioMan === true){
+			helpMe();
+			firstRadioMan = false;
+			}
 		}
-
+		
 		if ($('#input').val() === 'time'){
-			numberCounter = 46;
-			$('time').text('46');
-			$('#bfLogo').hide();
-			$('#timeText').hide();
-			$('textarea').append('bold.futura=is ');
+			if(firstTime === true){
+			boldSolution();
+			$('li:nth-child(2)').css('color','red').css('text-decoration','line-through');
+			firstTime = false;
+			}
 		}
         
         else if(counter === 10){
