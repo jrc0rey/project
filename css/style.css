@@ -123,6 +123,12 @@ body{
 	height: 600px;
 }
 
+#tagruato{
+	display: none;
+	width: 397px;
+	height: 498px;
+}
+
 
 
 
@@ -232,6 +238,14 @@ ul{
 
 li{
 	list-style: none;
+}
+
+#order{
+	display: none;
+	position: fixed;
+	top:185px;
+	color: white;
+	font-family: 'VT323', monospace;
 }
 
 

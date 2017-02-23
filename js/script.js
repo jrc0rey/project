@@ -25,6 +25,19 @@ function inputEnable(){
 var firstTime = true;
 var firstRadioMan = true;
 var howardClue = true;
+var tagruatoClue = true;
+
+//Tagruato
+
+function tagruato(){
+	$('#overlays').css('display','flex')
+	$('#tagruato').show();
+	$('li:nth-child(1)').css('color','red').css('text-decoration','line-through');
+	$('#tagruato').fadeOut(10000);
+	setTimeout(function(){
+		$('#overlays').css('display','none');
+	},10000)
+}
 
 // Howard's Clue Part I
 
@@ -102,7 +115,7 @@ function slusho(){
 }	
 
 // Timer
-var numberCounter = 15;
+var numberCounter = 20;
 function setTimer(){
 // var counter = 50;
 var countdown = setInterval(function(){
@@ -157,6 +170,13 @@ function helpMe(){
 function howard(){
 	$('textarea').append('h.stambler=the ')
     $('ul').show();
+    $('#order').show();
+}
+
+//Tagruato Solution
+
+function tagruatoSolution(){
+	$('textarea').append('tagruato=search ')
 }
 
 //Input Box
@@ -187,6 +207,9 @@ $('#submit').on('click',function(e){
         	 setGame();
         	 setTimer();
         	 }
+        if ($('#input').val() === 'tagruato'){
+        	tagruato();
+        }
         if ($('#input').val() === 'help.me'){
         	$('.picol_attachment').show();
         	$('li:nth-child(5)').css('color','red').css('text-decoration','line-through');
@@ -197,7 +220,6 @@ $('#submit').on('click',function(e){
         	$('#access').hide();
         	$('#input').val('')
         	},2000);
-        	// $('#wrong').hide();
         	$('li:nth-child(7)').css('color','red').css('text-decoration','line-through');
 			clueOne();
         }
@@ -225,6 +247,13 @@ $('#submit').on('click',function(e){
         
 		//Solutions
 
+		if ($('#input').val() === 'chuaistation'){
+        	if(tagruatoClue === true){
+        	tagruatoSolution();
+        	tagruatoClue = false;
+        	}
+        }
+
         if ($('#input').val() === '0m7'){
         	if(howardClue === true){
         	howard();
@@ -246,7 +275,7 @@ $('#submit').on('click',function(e){
 			}
 		}
         
-        else if(counter === 10){
+       	if(counter === 10){
         	endGame();
         }
        }
