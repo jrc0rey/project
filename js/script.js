@@ -327,7 +327,6 @@ $('#reloadBtn').on('click',function(e){
 });
 
 function endGame(){
-	$('#submit').hide();
 	$('#time').hide();
 	$('#gamePage').css('display', 'none');
 	$('#busted').show();
