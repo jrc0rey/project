@@ -1,3 +1,3 @@
-Viral Marketing Game
+Viral Marketing Game.
 
-ties in with the new addition to the Cloverfield film series.
+Ties in with the new addition in the "Cloverfield" film series.
