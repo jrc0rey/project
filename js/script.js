@@ -1,16 +1,16 @@
 
 // //Start Page
 
-// $('#startBtn').on('click',function(e){ 
-// 	$('#gif').show();
-// 	$('#audio').prop('volume','.05');
-// 	$('#audio').trigger('play');
-// setTimeout(function(e){
-// 	$('#gif').hide();
-// 	},3000); 
-// 	$('#gamePage').css('display','flex');
-// 	$('#pageOne').css('display', 'none')
-// });
+$('#startBtn').on('click',function(e){ 
+	$('#gif').show();
+	$('#audio').prop('volume','.05');
+	$('#audio').trigger('play');
+setTimeout(function(e){
+	$('#gif').hide();
+	},3000); 
+	$('#gamePage').css('display','flex');
+	$('#pageOne').css('display', 'none')
+});
 
 function inputDisable(){
 	$('#input').prop('disabled', true)
@@ -24,19 +24,25 @@ function inputEnable(){
 
 var firstTime = true;
 var firstRadioMan = true;
-var howardClue = true;
-var tagruatoClue = true;
+var firstHoward = true;
+var firstTagruato = true;
+
+var boldFutura = false;
+var tagruato = false;
+var howardClue = false;
+var meganClue = false;
+
 
 //Tagruato
 
-function tagruato(){
+function tagruatoClue(){
 	$('#overlays').css('display','flex')
 	$('#tagruato').show();
 	$('li:nth-child(1)').css('color','red').css('text-decoration','line-through');
-	$('#tagruato').fadeOut(10000);
+	$('#tagruato').fadeOut(5000);
 	setTimeout(function(){
 		$('#overlays').css('display','none');
-	},10000)
+	},5000)
 }
 
 // Howard's Clue Part I
@@ -147,18 +153,18 @@ function setGame(){
 //Bold.Futura Solution
 
 function boldSolution(){
-			numberCounter = 51;
-			$('time').text('51');
+			numberCounter = 76;
+			$('time').text('76');
 			$('#bfLogo').hide();
 			$('#timeText').hide();
-			$('textarea').append('bold.futura=is ');
+			$('textarea').append('bold.futura= is ');
 
 }
 
 //Help.me Solution
 
 function helpMe(){
-	$('textarea').append('help.me=over ');
+	$('textarea').append('help.me= over ');
     $('ul').show();
 	$('#letterContainer').hide();
 	$('button').text('login');
@@ -168,7 +174,7 @@ function helpMe(){
 //Howard's Solution
 
 function howard(){
-	$('textarea').append('h.stambler=the ')
+	$('textarea').append('h.stambler= the ')
     $('ul').show();
     $('#order').show();
 }
@@ -176,7 +182,15 @@ function howard(){
 //Tagruato Solution
 
 function tagruatoSolution(){
-	$('textarea').append('tagruato=search ')
+	$('textarea').append('tagruato= search ')
+}
+
+//Ending
+
+function ending(){
+	$('#overlays').css('display','flex');
+	$('#end').show();
+
 }
 
 //Input Box
@@ -192,11 +206,15 @@ $('#submit').on('click',function(e){
 	if( $('#input').val() === 'thesearchisover') {
 		$('#access').show();
         $('#access').text('ACCESS GRANTED');
-        $('#access').css('color','#00fcdd')
+        $('#access').css('color','#17e561')
+        setTimeout(function(){
+        	 ending();
+        },2000)
+       
 	}
     else{
     	counter++
-    	$('#attempts').text('attempts: ' + counter + ' of 10');
+    	$('#attempts').text('attempts: ' + counter + ' of 15');
     	$('#access').show();
         $('#access').text('ACCESS DENIED');
         if(counter === 1){
@@ -208,14 +226,17 @@ $('#submit').on('click',function(e){
         	 setTimer();
         	 }
         if ($('#input').val() === 'tagruato'){
-        	tagruato();
+        	tagruato = true;
+        	tagruatoClue();
         }
         if ($('#input').val() === 'help.me'){
+        	meganClue = true;
         	$('.picol_attachment').show();
         	$('li:nth-child(5)').css('color','red').css('text-decoration','line-through');
         }
 
         if ($('#input').val() === 'h.stambler'){
+        	howardClue = true;
         	setTimeout(function(){
         	$('#access').hide();
         	$('#input').val('')
@@ -225,6 +246,7 @@ $('#submit').on('click',function(e){
         }
 
         if ($('#input').val() === 'bold.futura'){
+        	boldFutura = true;
         	bold();
         }
 
@@ -248,22 +270,31 @@ $('#submit').on('click',function(e){
 		//Solutions
 
 		if ($('#input').val() === 'chuaistation'){
-        	if(tagruatoClue === true){
+        	if(firstTagruato === true){
         	tagruatoSolution();
-        	tagruatoClue = false;
+        	firstTagruato = false;
+        	}
+        	if(tagruato === false){
+        		endGame();
         	}
         }
 
         if ($('#input').val() === '0m7'){
-        	if(howardClue === true){
+        	if(firstHoward === true){
         	howard();
-        	howardClue = false;
+        	firstHoward = false;
+        	}
+        	if(howardClue === false){
+        		endGame();
         	}
         }
         if ($('#input').val() === 'radioman70'){
         	if(firstRadioMan === true){
 			helpMe();
 			firstRadioMan = false;
+			}
+			if(meganClue === false){
+				endGame();
 			}
 		}
 		
@@ -273,9 +304,12 @@ $('#submit').on('click',function(e){
 			$('li:nth-child(2)').css('color','red').css('text-decoration','line-through');
 			firstTime = false;
 			}
+			if(boldFutura === false){
+				endGame();
+			};
 		}
         
-       	if(counter === 10){
+       	if(counter === 15){
         	endGame();
         }
        }

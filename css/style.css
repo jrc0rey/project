@@ -3,13 +3,24 @@ body{
 	margin:0;
 }
 
+#end{
+	display: none;
+	width:100%;
+	height:100%;
+	position: fixed;
+	background: url("../images/godParticle.jpg") no-repeat center center fixed; 
+  	background-size: cover;
+  	z-index: 3000;
+}
+
+
 /*Start Page*/
 
 #pageOne{
 	width:100%;
 	height:100%;
 	position: fixed;
-	display: none;
+	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
@@ -68,7 +79,7 @@ body{
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	z-index: 5;
+	z-index: 3000;
 	width:100%;
 }
 
@@ -77,7 +88,8 @@ body{
 
 
 #gamePage{
-	display: flex;
+	pointer-events: visible;
+	display: none;
 	position: fixed;
 	flex-direction: row;
 	width:100%;
@@ -86,6 +98,7 @@ body{
 	height:100%;
 	margin:0;
 	background-color: black;
+	z-index: 2000;
 }
 
 #overlays{
@@ -128,6 +141,7 @@ body{
 	width: 397px;
 	height: 498px;
 }
+
 
 
 
@@ -175,11 +189,11 @@ textarea{
 	position:fixed;
 	left:12px;
 	top: 100px;
-	max-width:150px;
+	max-width:75px;
 	max-height: 100px;
 	background-color: black;
 	font-family: 'VT323', monospace;
-	font-size: 11px;
+	font-size: 12px;
 	color: white;
 	border: solid 1px white;
 }
